@@ -1,0 +1,53 @@
+<mat-toolbar color="primary">
+    <span class="fill-remaining-space">Employee Registration Form</span>
+  </mat-toolbar>
+  
+  <div class="container"> 
+    <form [formGroup]="formGroup" (ngSubmit)="submit()" class="form">
+  
+      <mat-form-field class="form-element">
+        <input matInput placeholder="First Name" formControlName="firstName">
+      </mat-form-field>
+
+      <br/>
+  
+      <mat-form-field class="form-element">
+          <input matInput placeholder="Last Name" formControlName="lastName">
+      </mat-form-field>
+
+      <br/>
+  
+      <mat-form-field>
+          <mat-label>Gender</mat-label>
+          <mat-select formControlName="gender" >
+            <mat-option value="M">Male</mat-option>
+            <mat-option value="F">Female</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <br/>
+  
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Date Of Birth" formControlName="dateOfBirth">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+  
+          <br/>
+          <mat-form-field class="form-element">
+              <input matInput placeholder="Department" formControlName="department">
+          </mat-form-field>
+  
+      <div class="form-element">
+        <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Submit</button>
+        &nbsp;&nbsp;&nbsp;<button mat-raised-button color="primary" class="button" type="button" (click)="reset()">Reset</button>
+      </div>
+  
+    </form>
+  </div>
+  
+  <ng-template #forminfo>
+    <div class="container">
+      {{ post | json }}
+    </div>
+  </ng-template>
